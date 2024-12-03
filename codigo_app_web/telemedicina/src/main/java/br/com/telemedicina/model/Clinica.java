@@ -29,4 +29,10 @@ public class Clinica {
 
     @Column(length = 100)
     private String emailClinica;
+
+    @Column(name = "latitude")
+    private String latitudeClinica;
+
+    @Column(name = "longitude")
+    private String longitudeClinica;
 }

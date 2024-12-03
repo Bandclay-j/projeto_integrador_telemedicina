@@ -1,25 +1,11 @@
 body,html {
     position: relative;
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
     color: #333;
     margin: 0;
     padding: 0;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url(../img/background.png);
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url(../img/background.png) no-repeat center center fixed;
     background-size: cover;
-    opacity: 0.25;
-    z-index: -1;
 }
 
 .navbar {
@@ -33,4 +19,54 @@ body::before {
     background-color: white;
     padding: 20px;
     margin: 10px 20px 0 0;
+}
+
+.mt-5 h2 {
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+    padding: 5px;
+}
+
+#nos {
+    font-size: 1.5rem;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    text-align: justify;
+}
+
+/* Section Styles */
+#servicos, .col-md-4, .col-md-3 {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+}
+
+#servicos h3, .col-md-4 h3, .col-md-3 h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #007bff;
+    text-align: center;
+}
+
+#servicos p, .col-md-4 p, .col-md-3 p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.col-md-4 img, .col-md-3 img {
+    width: 70%;
+    height: 50%;
+    border-radius: 8px;
+    display: block;
+    margin: 20px auto;
+}
+
+.col-md-4:hover, .col-md-3:hover {
+    transform: scale(1.05);
 }
