@@ -15,19 +15,19 @@ public class Clinica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 100)
+    @Column(length = 100, name = "nomeClinica")
     private String nomeClinica;
 
-    @Column(length = 200)
+    @Column(length = 200, name = "enderecoClinica")
     private String enderecoClinica;
 
-    @Column(length = 18, unique = true)
+    @Column(length = 18, unique = true, name = "cnpjClinica")
     private String cnpjClinica;
 
-    @Column(length = 15)
+    @Column(length = 15, name = "telefoneClinica")
     private String telefoneClinica;
 
-    @Column(length = 100)
+    @Column(length = 100, name = "emailClinica")
     private String emailClinica;
 
     @Column(name = "latitude")

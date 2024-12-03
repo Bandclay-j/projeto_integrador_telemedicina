@@ -42,6 +42,7 @@ public class PacienteService {
     public boolean removerPacente(Integer id) {
         if(pacienteRepository.existsById(id)) {
             pacienteRepository.deleteById(id);
+            return true;
         }
         return false;
     }

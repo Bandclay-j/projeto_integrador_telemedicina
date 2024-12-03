@@ -17,20 +17,20 @@ public class Prescricao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(name = "medicamento")
     private String medicamento;
 
-    @Column
+    @Column(name = "observacao")
     private String observacao;
 
     @ManyToOne
-    @JoinColumn()
+    @JoinColumn(name = "ID_PACIENTE", nullable = false)
     private Paciente paciente;
 
     @ManyToOne
-    @JoinColumn()
+    @JoinColumn(name = "ID_MEDICO", nullable = false)
     private Medico medico;
 
-    @Column
+    @Column(name = "dataPrescricao")
     private LocalDate dataPrescricao;
 }

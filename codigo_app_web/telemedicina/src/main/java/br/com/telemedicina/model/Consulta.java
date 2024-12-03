@@ -18,10 +18,10 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(name = "dataConsulta")
     private LocalDate dataConsulta;
 
-    @Column(length = 10)
+    @Column(length = 10, name = "formatoConsulta")
     private String formatoConsulta;
 
     @ManyToOne
@@ -36,9 +36,9 @@ public class Consulta {
     @JoinColumn(name = "ID_CLINICA", nullable = false)
     private Clinica clinica;
 
-    @Column
+    @Column(name = "pagamentoConsulta")
     private Float pagamentoConsulta;
 
-    @Column(length = 200)
+    @Column(length = 200, name = "areaProcura")
     private String areaProcura;
 }

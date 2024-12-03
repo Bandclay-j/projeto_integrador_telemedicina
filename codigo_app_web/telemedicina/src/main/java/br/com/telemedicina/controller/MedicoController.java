@@ -38,14 +38,14 @@ public class MedicoController {
     @PostMapping("/cadastrar")
     public ResponseEntity<String> cadastrarMedico(@RequestBody Medico medico) {
         medicoService.cadastrarMedico(medico);
-        return ResponseEntity.status(201).body("Personagem cadastrado com sucesso!");
+        return ResponseEntity.status(201).body("Medico cadastrado com sucesso!");
     }
 
     @PutMapping
     public ResponseEntity<String> atualizarMedico(@PathVariable Integer id, @RequestBody Medico medicoAtualizado) {
         return medicoService.atualizarMedico(id, medicoAtualizado)
                 .map(medico -> ResponseEntity.ok("Medico atualizado com sucesso!"))
-                .orElse(ResponseEntity.status(404).body("Erro: Personagem com ID " + id + " não encontrado."));
+                .orElse(ResponseEntity.status(404).body("Erro: Médico com ID " + id + " não encontrado."));
     }
 
     @DeleteMapping
@@ -53,7 +53,7 @@ public class MedicoController {
         if(medicoService.removerMedico(id)) {
             return ResponseEntity.ok("Medico removido com sucesso!");
         } else {
-            return ResponseEntity.status(404).body("Erro: Personagem com ID " + id + "Não encontrado.");
+            return ResponseEntity.status(404).body("Erro: Médico com ID " + id + "Não encontrado.");
         }
     }
 }

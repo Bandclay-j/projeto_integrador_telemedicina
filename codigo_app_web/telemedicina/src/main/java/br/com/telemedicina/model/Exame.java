@@ -18,19 +18,19 @@ public class Exame {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 300)
+    @Column(length = 300, name = "diagnosticoExame")
     private String diagnosticoExame;
 
-    @Column
+    @Column(name = "statusExame")
     private String statusExame;
 
-    @Column
+    @Column(name = "dataExame")
     private LocalDate dataExame;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", name = "descricaoExame")
     private String descricaoExame;
 
-    @Column
+    @Column(name = "valorExame")
     private float valorExame;
 
     @ManyToOne
