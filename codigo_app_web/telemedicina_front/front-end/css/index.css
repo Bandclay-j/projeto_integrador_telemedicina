@@ -16,7 +16,7 @@ body,html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #f8f9fa;
     padding: 20px;
     margin: 10px 20px 0 0;
 }
@@ -69,4 +69,125 @@ body,html {
 
 .col-md-4:hover, .col-md-3:hover {
     transform: scale(1.05);
+}
+
+/* Container centralizado com maior responsividade */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destaque */
+    background-color: #ffffff; /* Fundo branco para contraste */
+    border-radius: 0.5rem; /* Bordas arredondadas */
+}
+
+/* Centralização de texto */
+.text-center {
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Margem superior */
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+/* Margem inferior */
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+/* Estilo para os rótulos */
+.form-label {
+    font-weight: bold;
+    color: #333; /* Texto escuro para melhor legibilidade */
+    display: block; /* Garante que esteja acima do campo */
+    margin-bottom: 0.5rem; /* Espaçamento entre rótulo e campo */
+}
+
+/* Campos de formulário */
+.form-control {
+    width: 100%; /* Garante que os campos ocupem a largura total */
+    padding: 0.5rem; /* Adiciona espaço interno */
+    font-size: 1rem; /* Tamanho de fonte legível */
+    border: 1px solid #ced4da; /* Bordas suaves */
+    border-radius: 0.25rem; /* Bordas arredondadas */
+    transition: border-color 0.2s, box-shadow 0.2s; /* Animação suave */
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Destaque ao focar */
+    outline: none; /* Remove o contorno padrão */
+}
+
+/* Botão principal */
+.btn-primary {
+    background-color: #007bff; /* Azul principal */
+    border-color: #007bff; /* Cor da borda */
+    color: #fff; /* Texto branco */
+    padding: 0.5rem 1rem; /* Espaçamento interno */
+    font-size: 1rem; /* Tamanho da fonte */
+    border-radius: 0.25rem; /* Bordas arredondadas */
+    cursor: pointer; /* Muda o cursor para indicar clicável */
+    transition: background-color 0.3s, border-color 0.3s; /* Transição suave */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Azul escuro ao passar o mouse */
+    border-color: #004085; /* Cor da borda ao passar o mouse */
+}
+
+/* Acessibilidade: foco no botão */
+.btn-primary:focus {
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Destaque ao focar */
+}
+
+/* Estilização geral do rodapé */
+footer {
+    background-color: #f8f9fa; /* Fundo claro para contraste */
+    color: #6c757d; /* Texto com tom neutro */
+    padding: 1.5rem 0; /* Espaçamento interno */
+    border-top: 1px solid #e9ecef; /* Linha sutil na parte superior */
+}
+
+/* Centralização do texto */
+footer p {
+    margin: 0; /* Remove margens padrão */
+    font-size: 0.9rem; /* Tamanho de texto menor */
+}
+
+/* Links do rodapé */
+footer a {
+    color: #007bff; /* Azul consistente com outros links */
+    text-decoration: none; /* Remove sublinhado padrão */
+    transition: color 0.2s ease-in-out; /* Transição suave */
+}
+
+footer a:hover {
+    color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    text-decoration: underline; /* Adiciona sublinhado para indicar interatividade */
+}
+
+/* Espaçamento entre colunas e responsividade */
+footer .row {
+    align-items: center; /* Alinha verticalmente os elementos */
+}
+
+footer .col-md-6 {
+    margin-bottom: 1rem; /* Espaçamento inferior em telas menores */
+}
+
+@media (max-width: 768px) {
+    footer .col-md-6 {
+        text-align: center; /* Centraliza texto em dispositivos menores */
+    }
+}
+
+/* Estilo adicional para responsividade */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%; /* Ajusta o tamanho para telas menores */
+    }
 }
