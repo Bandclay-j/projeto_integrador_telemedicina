@@ -6,10 +6,16 @@
         <option name="requests">
           <list>
             <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;id&quot;: 6,&#10;  &quot;nomeMed&quot;: &quot;Luiz Matheus Fernandes&quot;,&#10;  &quot;cpfMed&quot;: &quot;456.123.789-43&quot;,&#10;  &quot;nascimentoMed&quot;: &quot;1990-05-07&quot;,&#10;  &quot;generoMed&quot;: &quot;M&quot;,&#10;  &quot;telefoneMed&quot;: &quot;(51) 95544-6611&quot;,&#10;  &quot;enderecoMed&quot;: &quot;Rua E, 654, Porto Alegre, RS&quot;,&#10;  &quot;emailMed&quot;: &quot;luiz.fernandes@email.com&quot;,&#10;  &quot;rgMed&quot;: &quot;43.876.543-2&quot;,&#10;  &quot;registroMed&quot;: &quot;CRM11223&quot;,&#10;  &quot;especializacao&quot;: &quot;Dermatologia&quot;,&#10;  &quot;instituicaoEnsino&quot;: &quot;UFRGS&quot;,&#10;  &quot;conclusaoGrad&quot;: &quot;2000-05-22T03:00:00.000+00:00&quot;,&#10;  &quot;certificacao&quot;: &quot;Certificação JKL&quot;,&#10;  &quot;areaInteresse&quot;: &quot;Dermatologia Estética&quot;,&#10;  &quot;credenciais&quot;: &quot;Membro da SD&quot;,&#10;  &quot;experiencia&quot;: &quot;20 anos atuando em clínicas estéticas renomadas.&quot;,&#10;  &quot;senhaMed&quot;: &quot;senha34569&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
               <option name="id" value="17d65b72-0296-4703-b59c-372962cc66cf" />
               <option name="method" value="GET" />
               <option name="name" value="Draft" />
-              <option name="url" value="http://localhost:8080/paciente" />
+              <option name="url" value="http://localhost:8080/medico/6" />
             </requestState>
           </list>
         </option>

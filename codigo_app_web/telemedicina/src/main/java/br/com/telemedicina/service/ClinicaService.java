@@ -1,5 +1,6 @@
 package br.com.telemedicina.service;
 
+<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +9,15 @@ import org.springframework.stereotype.Service;
 import br.com.telemedicina.model.Clinica;
 import br.com.telemedicina.repository.ClinicaRepository;
 
+=======
+import br.com.telemedicina.model.Clinica;
+import br.com.telemedicina.repository.ClinicaRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+>>>>>>> 56f99336744b6dbe03d68c42791bed2a464b63b6
 @Service
 public class ClinicaService {
     

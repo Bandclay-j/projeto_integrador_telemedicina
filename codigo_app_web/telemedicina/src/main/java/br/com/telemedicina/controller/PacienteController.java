@@ -38,14 +38,14 @@ public class PacienteController {
         return ResponseEntity.status(201).body("Paciente cadastrado com sucesso!");
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<String> atualizarPaciente(@PathVariable Integer id, @RequestBody Paciente pacienteAtualizado) {
         return pacienteService.atualizarPaciente(id, pacienteAtualizado)
                 .map(paciente -> ResponseEntity.ok("Paciente atualizado com sucesso."))
                 .orElse(ResponseEntity.status(404).body("Erro: Paciente com ID " + id + " não encontrado."));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarPaciente (@PathVariable Integer id) {
         if(pacienteService.removerPacente(id)) {
             return ResponseEntity.ok("Paciente removido com sucesso!");
