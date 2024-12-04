@@ -35,7 +35,7 @@ public class MedicoController {
                 .orElse(ResponseEntity.status(404).build());
     }
 
-    @PostMapping("/cadastrar")
+    @PostMapping
     public ResponseEntity<String> cadastrarMedico(@RequestBody Medico medico) {
         medicoService.cadastrarMedico(medico);
         return ResponseEntity.status(201).body("Medico cadastrado com sucesso!");
@@ -53,7 +53,7 @@ public class MedicoController {
         if(medicoService.removerMedico(id)) {
             return ResponseEntity.ok("Medico removido com sucesso!");
         } else {
-            return ResponseEntity.status(404).body("Erro: Médico com ID " + id + "Não encontrado.");
+            return ResponseEntity.status(404).body("Erro: Médico com ID " + id + "não encontrado.");
         }
     }
 }
