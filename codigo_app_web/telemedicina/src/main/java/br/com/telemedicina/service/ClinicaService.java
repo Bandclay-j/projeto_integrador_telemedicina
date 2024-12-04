@@ -1,12 +1,16 @@
 package br.com.telemedicina.service;
 
-import br.com.telemedicina.model.Clinica;
-import br.com.telemedicina.repository.ClinicaRepository;
-
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
+import br.com.telemedicina.model.Clinica;
+import br.com.telemedicina.repository.ClinicaRepository;
+
+@Service
 public class ClinicaService {
+    
     private ClinicaRepository clinicaRepository;
 
     public ClinicaService(ClinicaRepository clinicaRepository) {
