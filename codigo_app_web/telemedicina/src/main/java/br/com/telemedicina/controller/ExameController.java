@@ -1,7 +1,11 @@
 package br.com.telemedicina.controller;
 
+import br.com.telemedicina.dto.ExameRequestDTO;
+import br.com.telemedicina.dto.ExameResponseDTO;
 import br.com.telemedicina.model.Exame;
 import br.com.telemedicina.service.ExameService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,16 +31,15 @@ public class ExameController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Exame> listarExamePeloId (@PathVariable Integer id) {
-        return exameService.getExameById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.status(404).build());
+    public ResponseEntity<ExameResponseDTO> buscarExamePorId(@PathVariable Integer id) {
+        ExameResponseDTO exameResponseDTO = exameService.buscarExamePorId(id);
+        return ResponseEntity.ok(exameResponseDTO);
     }
 
     @PostMapping
-    public ResponseEntity<String> cadastrarExame(@RequestBody Exame exame) {
-        exameService.cadastrarExame(exame);
-        return ResponseEntity.status(201).body("Exame cadastrado com sucesso!");
+    public ResponseEntity<ExameResponseDTO> cadastrarExame(@RequestBody @Valid ExameRequestDTO exameRequestDTO) {
+        ExameResponseDTO exameResponseDTO = exameService.cadastrarExame(exameRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(exameResponseDTO);
     }
 
     @PutMapping("/{id}")

@@ -17,6 +17,18 @@
               <option name="name" value="Draft" />
               <option name="url" value="http://localhost:8080/medico/6" />
             </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;diagnosticoExame&quot;: &quot;Inflamação detectada no pulmão esquerdo&quot;,&#10;  &quot;statusExame&quot;: &quot;Concluído&quot;,&#10;  &quot;dataExame&quot;: &quot;2024-12-01&quot;,&#10;  &quot;descricaoExame&quot;: &quot;Raio-X revelou sinais de inflamação na região do pulmão esquerdo.&quot;,&#10;  &quot;valorExame&quot;: 250.00,&#10;  &quot;pacienteId&quot;: 1,&#10;  &quot;medicoId&quot;: 2,&#10;  &quot;clinicaId&quot;: 3&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="id" value="1b493dda-58a8-4ff0-a3b2-c24470bf6c88" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft (1)" />
+              <option name="url" value="http://localhost:8080/exame" />
+            </requestState>
           </list>
         </option>
       </draftsState>
