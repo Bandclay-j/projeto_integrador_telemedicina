@@ -12,19 +12,31 @@ body,html {
     padding: 20px;
 }
 
+main {
+    margin: 0;
+}
+
 .mt-5 {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f8f9fa;
     padding: 20px;
-    margin: 10px 20px 0 0;
 }
 
 .mt-5 h2 {
     margin-bottom: 15px;
     font-size: 2.5rem;
     padding: 5px;
+}
+.btn-outline-success, .btn-outline-secondary {
+    margin: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    color: #333;
 }
 
 #nos {
@@ -76,9 +88,9 @@ body,html {
     max-width: 500px;
     margin: 0 auto;
     padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destaque */
-    background-color: #ffffff; /* Fundo branco para contraste */
-    border-radius: 0.5rem; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 0.5rem;
 }
 
 /* Centralização de texto */
@@ -100,94 +112,151 @@ body,html {
 /* Estilo para os rótulos */
 .form-label {
     font-weight: bold;
-    color: #333; /* Texto escuro para melhor legibilidade */
-    display: block; /* Garante que esteja acima do campo */
-    margin-bottom: 0.5rem; /* Espaçamento entre rótulo e campo */
+    color: #333;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 /* Campos de formulário */
 .form-control {
-    width: 100%; /* Garante que os campos ocupem a largura total */
-    padding: 0.5rem; /* Adiciona espaço interno */
-    font-size: 1rem; /* Tamanho de fonte legível */
-    border: 1px solid #ced4da; /* Bordas suaves */
-    border-radius: 0.25rem; /* Bordas arredondadas */
-    transition: border-color 0.2s, box-shadow 0.2s; /* Animação suave */
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .form-control:focus {
-    border-color: #007bff; /* Cor da borda ao focar */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Destaque ao focar */
-    outline: none; /* Remove o contorno padrão */
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
 }
 
 /* Botão principal */
 .btn-primary {
-    background-color: #007bff; /* Azul principal */
-    border-color: #007bff; /* Cor da borda */
-    color: #fff; /* Texto branco */
-    padding: 0.5rem 1rem; /* Espaçamento interno */
-    font-size: 1rem; /* Tamanho da fonte */
-    border-radius: 0.25rem; /* Bordas arredondadas */
-    cursor: pointer; /* Muda o cursor para indicar clicável */
-    transition: background-color 0.3s, border-color 0.3s; /* Transição suave */
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 1rem; 
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3; /* Azul escuro ao passar o mouse */
-    border-color: #004085; /* Cor da borda ao passar o mouse */
+    background-color: #0056b3;
+    border-color: #004085;
 }
 
 /* Acessibilidade: foco no botão */
 .btn-primary:focus {
-    outline: none; /* Remove o contorno padrão */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Destaque ao focar */
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
 /* Estilização geral do rodapé */
 footer {
-    background-color: #f8f9fa; /* Fundo claro para contraste */
-    color: #6c757d; /* Texto com tom neutro */
-    padding: 1.5rem 0; /* Espaçamento interno */
-    border-top: 1px solid #e9ecef; /* Linha sutil na parte superior */
+    background-color: #f8f9fa;
+    color: #6c757d;
+    padding: 1.5rem 0; 
+    border-top: 1px solid #e9ecef; 
 }
 
 /* Centralização do texto */
 footer p {
-    margin: 0; /* Remove margens padrão */
-    font-size: 0.9rem; /* Tamanho de texto menor */
+    margin: 0;
+    font-size: 0.9rem;
 }
 
 /* Links do rodapé */
 footer a {
-    color: #007bff; /* Azul consistente com outros links */
-    text-decoration: none; /* Remove sublinhado padrão */
-    transition: color 0.2s ease-in-out; /* Transição suave */
+    color: #007bff;
+    text-decoration: none; 
+    transition: color 0.2s ease-in-out; 
 }
 
 footer a:hover {
-    color: #0056b3; /* Azul mais escuro ao passar o mouse */
-    text-decoration: underline; /* Adiciona sublinhado para indicar interatividade */
+    color: #0056b3;
+    text-decoration: underline;
 }
 
 /* Espaçamento entre colunas e responsividade */
 footer .row {
-    align-items: center; /* Alinha verticalmente os elementos */
+    align-items: center;
 }
 
 footer .col-md-6 {
-    margin-bottom: 1rem; /* Espaçamento inferior em telas menores */
+    margin-bottom: 1rem;
 }
 
+/* Configuração global para fontes e espaçamentos menores em telas pequenas */
 @media (max-width: 768px) {
-    footer .col-md-6 {
-        text-align: center; /* Centraliza texto em dispositivos menores */
+    body, html {
+        font-size: 14px;
+    }
+    .navbar {
+        padding: 10px;
+    }
+    main {
+        margin: 5px;
     }
 }
 
-/* Estilo adicional para responsividade */
+/* Responsividade para seções de serviços e cards */
 @media (max-width: 768px) {
+    #servicos, .col-md-4, .col-md-3 {
+        flex-direction: column;
+        margin: 5px auto;
+        padding: 15px;
+    }
+    .col-md-4 img, .col-md-3 img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Responsividade para formulário */
+@media (max-width: 768px) {
+    .form-control {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
+    .form-label {
+        font-size: 0.9rem;
+    }
+    .btn-primary {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Responsividade para rodapé */
+@media (max-width: 768px) {
+    footer {
+        text-align: center;
+        padding: 1rem;
+    }
+    footer .row {
+        flex-direction: column;
+    }
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Layout para telas ultra pequenas */
+@media (max-width: 480px) {
     .container {
-        max-width: 90%; /* Ajusta o tamanho para telas menores */
+        max-width: 95%;
+        padding: 0.5rem;
+    }
+    .mt-5 {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .mt-5 h2 {
+        font-size: 1.5rem;
     }
 }
