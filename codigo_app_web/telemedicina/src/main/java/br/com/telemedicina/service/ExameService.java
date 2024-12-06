@@ -12,17 +12,16 @@ import br.com.telemedicina.repository.MedicoRepository;
 import br.com.telemedicina.repository.PacienteRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ExameService {
-    private ExameRepository exameRepository;
-    private MedicoRepository medicoRepository;
-    private PacienteRepository pacienteRepository;
-    private ClinicaRepository clinicaRepository;
+    private final ExameRepository exameRepository;
+    private final MedicoRepository medicoRepository;
+    private final PacienteRepository pacienteRepository;
+    private final ClinicaRepository clinicaRepository;
 
     public ExameService(ExameRepository exameRepository, MedicoRepository medicoRepository, PacienteRepository pacienteRepository, ClinicaRepository clinicaRepository) {
         this.exameRepository = exameRepository;
@@ -32,13 +31,18 @@ public class ExameService {
     }
 
     //Listar os exames
-    public List<Exame> getAllExames() {
-        return exameRepository.findAll();
+    public List<ExameResponseDTO> getAllExames() {
+        List<Exame> exames = exameRepository.findAll();
+        return exames.stream()
+                .map(this::toExameResponseDTO)
+                .collect(Collectors.toList());
     }
 
     //Listar os exames pelo ID
-    public Optional<Exame> getExameById(@PathVariable Integer id) {
-        return exameRepository.findById(id);
+    public ExameResponseDTO buscarExamePorId(Integer id) {
+        Exame exame = exameRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Exame não encontrado"));
+        return toExameResponseDTO(exame);
     }
 
     //Cadastrar exames
@@ -79,10 +83,47 @@ public class ExameService {
         );
     }
 
-    public ExameResponseDTO buscarExamePorId(Integer id) {
+    //Atualizar exames
+    public ExameResponseDTO atualizarExame(Integer id, ExameRequestDTO requestDTO) {
         Exame exame = exameRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Exame não encontrado"));
-        return toExameResponseDTO(exame);
+                .orElseThrow(() -> new IllegalArgumentException("Exame não encontrado."));
+
+        // Atualizar campos
+        exame.setDiagnosticoExame(requestDTO.getDiagnosticoExame());
+        exame.setStatusExame(requestDTO.getStatusExame());
+        exame.setDataExame(requestDTO.getDataExame());
+        exame.setDescricaoExame(requestDTO.getDescricaoExame());
+        exame.setValorExame(requestDTO.getValorExame());
+
+        // Atualizar relacionamentos, se necessário
+        if (!exame.getPaciente().getId().equals(requestDTO.getPacienteId())) {
+            Paciente paciente = pacienteRepository.findById(requestDTO.getPacienteId())
+                    .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado."));
+            exame.setPaciente(paciente);
+        }
+        if (!exame.getMedico().getId().equals(requestDTO.getMedicoId())) {
+            Medico medico = medicoRepository.findById(requestDTO.getMedicoId())
+                    .orElseThrow(() -> new IllegalArgumentException("Médico não encontrado."));
+            exame.setMedico(medico);
+        }
+        if (!exame.getClinica().getId().equals(requestDTO.getClinicaId())) {
+            Clinica clinica = clinicaRepository.findById(requestDTO.getClinicaId())
+                    .orElseThrow(() -> new IllegalArgumentException("Clínica não encontrada."));
+            exame.setClinica(clinica);
+        }
+
+        // Salvar alterações
+        Exame exameAtualizado = exameRepository.save(exame);
+
+        // Retornar como ResponseDTO
+        return toExameResponseDTO(exameAtualizado);
+    }
+
+    //Deletar exames
+    public void deletarExame(Integer id) {
+        Exame exame = exameRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Exame não encontrado."));
+        exameRepository.delete(exame);
     }
 
     private ExameResponseDTO toExameResponseDTO(Exame exame) {
@@ -97,22 +138,5 @@ public class ExameService {
         dto.setMedicoNome(exame.getMedico().getNomeMed());
         dto.setClinicaNome(exame.getClinica().getNomeClinica());
         return dto;
-    }
-
-    //Atualizar exames
-    public Optional<Exame> atualizarExame(Integer id, Exame exameAtualizar) {
-        return exameRepository.findById(id).map(exame -> {
-            exameAtualizar.setId(id);
-            return exameRepository.save(exameAtualizar);
-        });
-    }
-
-    //Deletar exames
-    public boolean removerExame(Integer id) {
-        if(exameRepository.existsById(id)) {
-            exameRepository.deleteById(id);
-            return true;
-        }
-        return false;
     }
 }

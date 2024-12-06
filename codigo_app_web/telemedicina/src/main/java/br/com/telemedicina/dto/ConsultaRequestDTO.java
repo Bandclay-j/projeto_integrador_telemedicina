@@ -11,22 +11,20 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExameRequestDTO {
-    @NotNull(message = "O ID do paciente é obrigatorio.")
+public class ConsultaRequestDTO {
+    @NotNull(message = "O ID do paciente é obrigatório.")
     @JsonProperty("pacienteId")
     private Integer pacienteId;
 
-    @NotNull(message = "O ID do médico é obrigatorio.")
+    @NotNull(message = "O ID do médico é obrigatório.")
     @JsonProperty("medicoId")
     private Integer medicoId;
 
-    @NotNull(message = "O ID da clinica é obrigatório.")
-    @JsonProperty("clinicaId")
+    @NotNull(message = "O ID da clinica é obrigatória.")
     private Integer clinicaId;
 
-    private String diagnosticoExame;
-    private String statusExame;
-    private LocalDate dataExame;
-    private String descricaoExame;
-    private Float valorExame;
+    private LocalDate dataConsulta;
+    private String formatoConsulta;
+    private float pagamentoConsulta;
+    private String areaProcura;
 }
