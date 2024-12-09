@@ -28,8 +28,20 @@
                 </ul>
             </div>
             <form class="d-flex" role="button">
-                <a class="btn btn-outline-success me-2" href="./src/login.html" role="button">Login</a>
-                <a class="btn btn-sm btn-outline-secondary" href="./src/cadPaciente.html" role="button">Cadastre-se</a>
+                <div class="dropdown">
+                    <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="src/loginMedico.html">Médico</a></li>
+                        <li><a class="dropdown-item" href="src/loginPaciente.html">Paciente</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastre-se</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="src/cadMedico.html">Médico</a></li>
+                        <li><a class="dropdown-item" href="src/cadPaciente.html">Paciente</a></li>
+                    </ul>
+                </div>
             </form>
         </div>
     </nav>
