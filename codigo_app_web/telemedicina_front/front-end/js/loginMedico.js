@@ -1,17 +1,14 @@
 function loginMedico() {
-    var nome = document.getElementById("nome").value;
     var email = document.getElementById("email").value;
     var senha = document.getElementById("senha").value;
 
-    if (nome == "" ||
-        email == "" ||
+    if (email == "" ||
         senha == "") {
         alert("Preencha todos os campos obrigatórios!");
         return;
     }
 
     axios.get('http://localhost:8080/medico', {
-        "nome": nome,
         "email": email,
         "senha": senha,
     })
