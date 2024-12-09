@@ -1,51 +1,144 @@
 package br.com.telemedicina.service;
 
+import br.com.telemedicina.dto.ConsultaRequestDTO;
+import br.com.telemedicina.dto.ConsultaResponseDTO;
+import br.com.telemedicina.model.Clinica;
 import br.com.telemedicina.model.Consulta;
+import br.com.telemedicina.model.Medico;
+import br.com.telemedicina.model.Paciente;
+import br.com.telemedicina.repository.ClinicaRepository;
 import br.com.telemedicina.repository.ConsultaRepository;
+import br.com.telemedicina.repository.MedicoRepository;
+import br.com.telemedicina.repository.PacienteRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ConsultaService {
 
     private ConsultaRepository consultaRepository;
+    private MedicoRepository medicoRepository;
+    private PacienteRepository pacienteRepository;
+    private ClinicaRepository clinicaRepository;
 
-    public ConsultaService(ConsultaRepository consultaRepository) {
+    public ConsultaService(ConsultaRepository consultaRepository, MedicoRepository medicoRepository, PacienteRepository pacienteRepository, ClinicaRepository clinicaRepository) {
         this.consultaRepository = consultaRepository;
+        this.medicoRepository = medicoRepository;
+        this.pacienteRepository = pacienteRepository;
+        this.clinicaRepository = clinicaRepository;
     }
 
     //Listar as consultas
-    public List<Consulta> getAllConsulta() {
-        return consultaRepository.findAll();
+    public List<ConsultaResponseDTO> getAllConsulta() {
+        List<Consulta> consultas = consultaRepository.findAll();
+        return consultas.stream()
+                .map(this::toConsultaResponseDTO)
+                .collect(Collectors.toList());
     }
 
     //Buscar consulta pelo ID
-    public Optional<Consulta> getConsultaById(@PathVariable Integer id) {
-        return consultaRepository.findById(id);
+    public ConsultaResponseDTO getConsultaById(Integer id) {
+        Consulta consulta = consultaRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Consulta não encontrado."));
+        return toConsultaResponseDTO(consulta);
     }
 
     //Cadastrar uma consulta
-    public Consulta cadastrarConsulta(Consulta consulta) {
-        return consultaRepository.save(consulta);
+    public ConsultaResponseDTO cadastrarConsulta(ConsultaRequestDTO dto) {
+        if(dto.getPacienteId() == null || dto.getMedicoId() == null || dto.getClinicaId() == null) {
+            throw new IllegalArgumentException("IDs de paciente, médico e clinica são obrigatórios.");
+        }
+
+        Paciente paciente = pacienteRepository.findById(dto.getPacienteId())
+                .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado."));
+        Medico medico = medicoRepository.findById(dto.getMedicoId())
+                .orElseThrow(() -> new IllegalArgumentException("Médico não encontrado."));
+        Clinica clinica = clinicaRepository.findById(dto.getClinicaId())
+                .orElseThrow(() -> new IllegalArgumentException("Clinica não econtrada."));
+
+        Consulta consulta = new Consulta();
+        consulta.setDataConsulta(dto.getDataConsulta());
+        consulta.setFormatoConsulta(dto.getFormatoConsulta());
+        consulta.setPagamentoConsulta(dto.getPagamentoConsulta());
+        consulta.setAreaProcura(dto.getAreaProcura());
+        consulta.setPaciente(paciente);
+        consulta.setMedico(medico);
+        consulta.setClinica(clinica);
+
+        consulta = consultaRepository.save(consulta);
+
+        return new ConsultaResponseDTO(
+                consulta.getId(),
+                consulta.getDataConsulta(),
+                consulta.getFormatoConsulta(),
+                consulta.getPagamentoConsulta(),
+                consulta.getAreaProcura(),
+                paciente.getNome(),
+                medico.getNomeMed(),
+                clinica.getNomeClinica()
+        );
     }
 
     //Atualizar uma consulta
-    public Optional<Consulta> atualizarConsulta(Integer id, Consulta consultaAtualizar) {
-        return consultaRepository.findById(id).map(consulta -> {
-           consultaAtualizar.setId(id);
-           return consultaRepository.save(consultaAtualizar);
-        });
+    public ConsultaResponseDTO atualizarConsulta(Integer id, ConsultaRequestDTO requestDTO) {
+        Consulta consulta = consultaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Consulta não encontrado."));
+
+        //Atualizar campos
+        consulta.setFormatoConsulta(requestDTO.getFormatoConsulta());
+        consulta.setFormatoConsulta(requestDTO.getFormatoConsulta());
+        consulta.setPagamentoConsulta(requestDTO.getPagamentoConsulta());
+        consulta.setAreaProcura(requestDTO.getAreaProcura());
+
+        //Atualizar relacionamentos, se necessários
+        if (!consulta.getPaciente().getId().equals(requestDTO.getPacienteId())) {
+            Paciente paciente = pacienteRepository.findById(requestDTO.getPacienteId())
+                    .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado."));
+            consulta.setPaciente(paciente);
+        }
+
+        if(!consulta.getMedico().getId().equals(requestDTO.getMedicoId())) {
+            Medico medico = medicoRepository.findById(requestDTO.getMedicoId())
+                    .orElseThrow(() -> new IllegalArgumentException("Méidco não encontrado."));
+            consulta.setMedico(medico);
+        }
+
+        if(!consulta.getClinica().getId().equals(requestDTO.getClinicaId())) {
+            Clinica clinica = clinicaRepository.findById(requestDTO.getClinicaId())
+                    .orElseThrow(() -> new IllegalArgumentException("Clinica não encontrada."));
+            consulta.setClinica(clinica);
+        }
+
+        //Salvar alterações
+        Consulta consultaAtualizado = consultaRepository.save(consulta);
+
+        //Retornar como ResponseDTO
+        return toConsultaResponseDTO(consultaAtualizado);
     }
 
     //Remover uma consulta
-    public boolean removerConsulta(Integer id) {
-        if(consultaRepository.existsById(id)) {
-            consultaRepository.deleteById(id);
-            return true;
-        }
-        return false;
+    public void removerConsulta(Integer id) {
+        Consulta consulta = consultaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Consulta não encontrado."));
+        consultaRepository.delete(consulta);
+    }
+
+    //Conversor de Consulta para ConsultaResponseDTO
+    private ConsultaResponseDTO toConsultaResponseDTO(Consulta consulta) {
+        ConsultaResponseDTO dto = new ConsultaResponseDTO();
+        dto.setId(consulta.getId());
+        dto.setDataConsulta(consulta.getDataConsulta());
+        dto.setFormatoConsulta(consulta.getFormatoConsulta());
+        dto.setPagamentoConsulta(consulta.getPagamentoConsulta());
+        dto.setAreaProcura(consulta.getAreaProcura());
+        dto.setPacienteNome(consulta.getPaciente().getNome());
+        dto.setMedicoNome(consulta.getMedico().getNomeMed());
+        dto.setClinicaNome(consulta.getClinica().getNomeClinica());
+        return dto;
     }
 }

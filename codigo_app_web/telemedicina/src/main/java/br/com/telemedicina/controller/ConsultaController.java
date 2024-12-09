@@ -1,7 +1,11 @@
 package br.com.telemedicina.controller;
 
+import br.com.telemedicina.dto.ConsultaRequestDTO;
+import br.com.telemedicina.dto.ConsultaResponseDTO;
 import br.com.telemedicina.model.Consulta;
 import br.com.telemedicina.service.ConsultaService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,40 +21,32 @@ public class ConsultaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Consulta>> listarConsultas() {
-        List<Consulta> consultas = consultaService.getAllConsulta();
-        if(consultas.isEmpty()){
-            return ResponseEntity.status(404).build();
-        }
+    public ResponseEntity<List<ConsultaResponseDTO>> listarConsultas() {
+        List<ConsultaResponseDTO> consultas = consultaService.getAllConsulta();
         return ResponseEntity.ok(consultas);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Consulta> listarConsultaPeloId(@PathVariable Integer id) {
-        return consultaService.getConsultaById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.status(404).build());
+    public ResponseEntity<ConsultaResponseDTO> listarConsultaPeloId(@PathVariable Integer id) {
+        ConsultaResponseDTO consultaResponseDTO = consultaService.getConsultaById(id);
+        return ResponseEntity.ok(consultaResponseDTO);
     }
 
     @PostMapping
-    public ResponseEntity<String> cadastrarConsulta(@RequestBody Consulta consulta) {
-        consultaService.cadastrarConsulta(consulta);
-        return ResponseEntity.status(201).body("Consulta cadastrado com sucesso!");
+    public ResponseEntity<ConsultaResponseDTO> cadastrarConsulta(@RequestBody @Valid ConsultaRequestDTO consultaRequestDTO) {
+        ConsultaResponseDTO consultaResponseDTO = consultaService.cadastrarConsulta(consultaRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(consultaResponseDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> atualizarConsulta(@PathVariable Integer id, @RequestBody Consulta consultaAtualizada) {
-        return consultaService.atualizarConsulta(id, consultaAtualizada)
-                .map(consulta -> ResponseEntity.ok("Consulta atualizada com sucesso!"))
-                .orElse(ResponseEntity.status(404).body("Erro: Consulta com ID: " + id + " não encontrado."));
+    public ResponseEntity<ConsultaResponseDTO> atualizarConsulta(@PathVariable Integer id, @RequestBody ConsultaRequestDTO requestDTO) {
+        ConsultaResponseDTO consultaAtualizada = consultaService.atualizarConsulta(id, requestDTO);
+        return ResponseEntity.ok(consultaAtualizada);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletarConsulta(@PathVariable Integer id) {
-        if (consultaService.removerConsulta(id)) {
-            return ResponseEntity.ok("Consulta removida com sucesso!");
-        } else {
-            return ResponseEntity.status(404).body("Erro: Consulta com ID " + id + " não encontrado.");
-        }
+    public ResponseEntity<Void> deletarConsulta(@PathVariable Integer id) {
+        consultaService.removerConsulta(id);
+        return ResponseEntity.noContent().build();
     }
 }
