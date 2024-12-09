@@ -28,6 +28,18 @@
               <option name="name" value="Draft (1)" />
               <option name="url" value="http://localhost:8080/exame/52" />
             </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;consulta&quot;: {&#10;    &quot;ID&quot;: 1,&#10;    &quot;dataConsulta&quot;: &quot;2024-12-09&quot;,&#10;    &quot;formatoConsulta&quot;: &quot;Online&quot;,&#10;    &quot;ID_PACIENTE&quot;: 123,&#10;    &quot;ID_MEDICO&quot;: 456,&#10;    &quot;ID_CLINICA&quot;: 789,&#10;    &quot;pagamentoConsulta&quot;: 250.00,&#10;    &quot;areaProcura&quot;: &quot;Dermatologia&quot;&#10;  }&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="id" value="00b3c462-4703-4bf7-b730-d36bdf56fa12" />
+              <option name="method" value="POST" />
+              <option name="name" value="Draft (2)" />
+              <option name="url" value="http://localhost:8080/consulta" />
+            </requestState>
           </list>
         </option>
       </draftsState>

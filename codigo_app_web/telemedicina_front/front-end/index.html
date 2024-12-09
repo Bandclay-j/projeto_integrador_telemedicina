@@ -28,18 +28,18 @@
                 </ul>
             </div>
             <form class="d-flex" role="button">
+                <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                 <div class="dropdown">
-                    <a class="btn btn-outline-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="src/loginMedico.html">Médico</a></li>
                         <li><a class="dropdown-item" href="src/loginPaciente.html">Paciente</a></li>
                     </ul>
                 </div>
                 <div class="dropdown">
-                    <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastre-se</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="src/cadMedico.html">Médico</a></li>
-                        <li><a class="dropdown-item" href="src/cadPaciente.html">Paciente</a></li>
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Cadastre-se</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="./src/cadPaciente.html">Cadastro Paciente</a></li>
+                        <li><a class="dropdown-item" href="./src/cadMedico.html">Cadastro Médico</a></li>
                     </ul>
                 </div>
             </form>
