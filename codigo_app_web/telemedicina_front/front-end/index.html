@@ -29,7 +29,13 @@
             </div>
             <form class="d-flex" role="button">
                 <a class="btn btn-outline-success me-2" href="./src/login.html" role="button">Login</a>
-                <a class="btn btn-sm btn-outline-secondary" href="./src/cadPaciente.html" role="button">Cadastre-se</a>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Cadastre-se</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="./src/cadPaciente.html">Cadastro Paciente</a></li>
+                        <li><a class="dropdown-item" href="./src/cadMedico.html">Cadastro Médico</a></li>
+                    </ul>
+                </div>
             </form>
         </div>
     </nav>
