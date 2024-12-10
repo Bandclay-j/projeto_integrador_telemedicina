@@ -21,7 +21,7 @@ public class Consulta {
     @Column(name = "dataConsulta")
     private LocalDate dataConsulta;
 
-    @Column(length = 10, name = "formatoConsulta")
+    @Column(name = "formatoConsulta")
     private String formatoConsulta;
 
     @ManyToOne

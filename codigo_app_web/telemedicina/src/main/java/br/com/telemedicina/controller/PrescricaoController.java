@@ -1,7 +1,11 @@
 package br.com.telemedicina.controller;
 
+import br.com.telemedicina.dto.PrescricaoRequestDTO;
+import br.com.telemedicina.dto.PrescricaoResponseDTO;
 import br.com.telemedicina.model.Prescricao;
 import br.com.telemedicina.service.PrescricaoService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,40 +22,32 @@ public class PrescricaoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Prescricao>> listarPrescricao() {
-        List<Prescricao> prescricaos = prescricaoService.getAllPrescricao();
-        if(prescricaos.isEmpty()) {
-            return ResponseEntity.status(404).build();
-        }
-        return ResponseEntity.ok(prescricaos);
+    public ResponseEntity<List<PrescricaoResponseDTO>> listarPrescricao() {
+        List<PrescricaoResponseDTO> prescricoes = prescricaoService.getAllPrescricao();
+        return ResponseEntity.ok(prescricoes);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Prescricao> listarPrescricaoPeloId (@PathVariable Integer id) {
-        return prescricaoService.getPrescricaoById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.status(404).build());
+    public ResponseEntity<PrescricaoResponseDTO> listarPrescricaoPeloId (@PathVariable Integer id) {
+        PrescricaoResponseDTO prescricaoResponseDTO = prescricaoService.getPrescricaoById(id);
+        return ResponseEntity.ok(prescricaoResponseDTO);
     }
 
     @PostMapping
-    public ResponseEntity<String> cadastrarPrescricao(@RequestBody Prescricao prescricao) {
-        prescricaoService.cadastrarPrescricoes(prescricao);
-        return ResponseEntity.status(201).body("Prescrição cadastrada com sucesso.");
+    public ResponseEntity<PrescricaoResponseDTO> cadastrarPrescricao(@RequestBody @Valid PrescricaoRequestDTO prescricaoRequestDTO) {
+        PrescricaoResponseDTO prescricaoResponseDTO = prescricaoService.cadastrarPrescricoes(prescricaoRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(prescricaoResponseDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> atualizarPrescricao (@PathVariable Integer id, @RequestBody Prescricao prescricaoAtualizada) {
-        return prescricaoService.atualizarPrescricao(id, prescricaoAtualizada)
-                .map(prescricao -> ResponseEntity.ok("Prescrição atualizada com sucesso!"))
-                .orElse(ResponseEntity.status(404).body("Erro: Prescrição com ID " + id + " não econtrada."));
+    public ResponseEntity<PrescricaoResponseDTO> atualizarPrescricao (@PathVariable Integer id, @RequestBody PrescricaoRequestDTO requestDTO) {
+        PrescricaoResponseDTO prescricaoAtualizada = prescricaoService.atualizarPrescricao(id, requestDTO);
+        return ResponseEntity.ok(prescricaoAtualizada);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarPrescricao (@PathVariable Integer id) {
-        if(prescricaoService.removerPrescricao(id)) {
-            return ResponseEntity.ok("Prescrição removida com sucesso.");
-        } else {
-            return ResponseEntity.status(404).body("Erro: Prescrição com ID " + id + " não encontrada.");
-        }
+        prescricaoService.removerPrescricao(id);
+        return ResponseEntity.noContent().build();
     }
 }
