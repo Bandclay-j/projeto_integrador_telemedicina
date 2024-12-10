@@ -8,17 +8,10 @@ import org.springframework.stereotype.Service;
 import br.com.telemedicina.model.Clinica;
 import br.com.telemedicina.repository.ClinicaRepository;
 
-import br.com.telemedicina.model.Clinica;
-import br.com.telemedicina.repository.ClinicaRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class ClinicaService {
     
-    private ClinicaRepository clinicaRepository;
+    private final ClinicaRepository clinicaRepository;
 
     public ClinicaService(ClinicaRepository clinicaRepository) {
         this.clinicaRepository = clinicaRepository;

@@ -11,20 +11,20 @@ import br.com.telemedicina.repository.ConsultaRepository;
 import br.com.telemedicina.repository.MedicoRepository;
 import br.com.telemedicina.repository.PacienteRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class ConsultaService {
 
-    private ConsultaRepository consultaRepository;
-    private MedicoRepository medicoRepository;
-    private PacienteRepository pacienteRepository;
-    private ClinicaRepository clinicaRepository;
+    private final ConsultaRepository consultaRepository;
+    private final MedicoRepository medicoRepository;
+    private final PacienteRepository pacienteRepository;
+    private final ClinicaRepository clinicaRepository;
 
     public ConsultaService(ConsultaRepository consultaRepository, MedicoRepository medicoRepository, PacienteRepository pacienteRepository, ClinicaRepository clinicaRepository) {
         this.consultaRepository = consultaRepository;
@@ -49,35 +49,35 @@ public class ConsultaService {
     }
 
     //Cadastrar uma consulta
-    public ConsultaResponseDTO cadastrarConsulta(ConsultaRequestDTO dto) {
-        if(dto.getPacienteId() == null || dto.getMedicoId() == null || dto.getClinicaId() == null) {
-            throw new IllegalArgumentException("IDs de paciente, médico e clinica são obrigatórios.");
+    public ConsultaResponseDTO cadastrarConsulta(ConsultaRequestDTO requestDTO) {
+        if(requestDTO.getPacienteId() == null || requestDTO.getMedicoId() == null || requestDTO.getClinicaId() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "IDs de paciente, médico e clinica são obrigatórios.");
         }
 
-        Paciente paciente = pacienteRepository.findById(dto.getPacienteId())
-                .orElseThrow(() -> new IllegalArgumentException("Paciente não encontrado."));
-        Medico medico = medicoRepository.findById(dto.getMedicoId())
-                .orElseThrow(() -> new IllegalArgumentException("Médico não encontrado."));
-        Clinica clinica = clinicaRepository.findById(dto.getClinicaId())
-                .orElseThrow(() -> new IllegalArgumentException("Clinica não econtrada."));
+        Paciente paciente = pacienteRepository.findById(requestDTO.getPacienteId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado."));
+        Medico medico = medicoRepository.findById(requestDTO.getMedicoId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Médico não encontrado."));
+        Clinica clinica = clinicaRepository.findById(requestDTO.getClinicaId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Clinica não econtrada."));
 
         Consulta consulta = new Consulta();
-        consulta.setDataConsulta(dto.getDataConsulta());
-        consulta.setFormatoConsulta(dto.getFormatoConsulta());
-        consulta.setPagamentoConsulta(dto.getPagamentoConsulta());
-        consulta.setAreaProcura(dto.getAreaProcura());
+        consulta.setDataConsulta(requestDTO.getDataConsulta());
+        consulta.setFormatoConsulta(requestDTO.getFormatoConsulta());
+        consulta.setPagamentoConsulta(requestDTO.getPagamentoConsulta());
+        consulta.setAreaProcura(requestDTO.getAreaProcura());
         consulta.setPaciente(paciente);
         consulta.setMedico(medico);
         consulta.setClinica(clinica);
 
-        consulta = consultaRepository.save(consulta);
+        Consulta consultaSalva = consultaRepository.save(consulta);
 
         return new ConsultaResponseDTO(
-                consulta.getId(),
-                consulta.getDataConsulta(),
-                consulta.getFormatoConsulta(),
-                consulta.getPagamentoConsulta(),
-                consulta.getAreaProcura(),
+                consultaSalva.getId(),
+                consultaSalva.getDataConsulta(),
+                consultaSalva.getFormatoConsulta(),
+                consultaSalva.getPagamentoConsulta(),
+                consultaSalva.getAreaProcura(),
                 paciente.getNome(),
                 medico.getNomeMed(),
                 clinica.getNomeClinica()

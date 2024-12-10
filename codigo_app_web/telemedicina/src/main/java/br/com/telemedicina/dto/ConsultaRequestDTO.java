@@ -21,10 +21,11 @@ public class ConsultaRequestDTO {
     private Integer medicoId;
 
     @NotNull(message = "O ID da clinica é obrigatória.")
+    @JsonProperty("clinicaId")
     private Integer clinicaId;
 
     private LocalDate dataConsulta;
     private String formatoConsulta;
-    private float pagamentoConsulta;
+    private Float pagamentoConsulta;
     private String areaProcura;
 }

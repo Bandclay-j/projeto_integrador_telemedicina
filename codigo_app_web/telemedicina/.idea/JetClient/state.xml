@@ -8,14 +8,14 @@
             <requestState>
               <option name="body">
                 <bodyState>
-                  <option name="raw" value="{&#10;  &quot;id&quot;: 6,&#10;  &quot;nomeMed&quot;: &quot;Luiz Matheus Fernandes&quot;,&#10;  &quot;cpfMed&quot;: &quot;456.123.789-43&quot;,&#10;  &quot;nascimentoMed&quot;: &quot;1990-05-07&quot;,&#10;  &quot;generoMed&quot;: &quot;M&quot;,&#10;  &quot;telefoneMed&quot;: &quot;(51) 95544-6611&quot;,&#10;  &quot;enderecoMed&quot;: &quot;Rua E, 654, Porto Alegre, RS&quot;,&#10;  &quot;emailMed&quot;: &quot;luiz.fernandes@email.com&quot;,&#10;  &quot;rgMed&quot;: &quot;43.876.543-2&quot;,&#10;  &quot;registroMed&quot;: &quot;CRM11223&quot;,&#10;  &quot;especializacao&quot;: &quot;Dermatologia&quot;,&#10;  &quot;instituicaoEnsino&quot;: &quot;UFRGS&quot;,&#10;  &quot;conclusaoGrad&quot;: &quot;2000-05-22T03:00:00.000+00:00&quot;,&#10;  &quot;certificacao&quot;: &quot;Certificação JKL&quot;,&#10;  &quot;areaInteresse&quot;: &quot;Dermatologia Estética&quot;,&#10;  &quot;credenciais&quot;: &quot;Membro da SD&quot;,&#10;  &quot;experiencia&quot;: &quot;20 anos atuando em clínicas estéticas renomadas.&quot;,&#10;  &quot;senhaMed&quot;: &quot;senha34569&quot;&#10;}" />
+                  <option name="raw" value="{&#10;  &quot;id&quot;: 2,&#10;  &quot;medicamento&quot;: &quot;Paracetamol&quot;,&#10;  &quot;observacao&quot;: &quot;Tomar após as refeições&quot;,&#10;  &quot;pacienteId&quot;: 2,&#10;  &quot;pacienteNome&quot;: &quot;Maria Oliveira&quot;,&#10;  &quot;medicoId&quot;: 21,&#10;  &quot;medicoNome&quot;: &quot;Larissa Costa&quot;,&#10;  &quot;dataPrescricao&quot;: &quot;2024-12-28&quot;&#10;}" />
                   <option name="type" value="JSON" />
                 </bodyState>
               </option>
               <option name="id" value="17d65b72-0296-4703-b59c-372962cc66cf" />
-              <option name="method" value="GET" />
+              <option name="method" value="DELETE" />
               <option name="name" value="Draft" />
-              <option name="url" value="http://localhost:8080/medico/6" />
+              <option name="url" value="http://localhost:8080/prescricao/11" />
             </requestState>
             <requestState>
               <option name="body">
@@ -31,14 +31,14 @@
             <requestState>
               <option name="body">
                 <bodyState>
-                  <option name="raw" value="{&#10;  &quot;consulta&quot;: {&#10;    &quot;ID&quot;: 1,&#10;    &quot;dataConsulta&quot;: &quot;2024-12-09&quot;,&#10;    &quot;formatoConsulta&quot;: &quot;Online&quot;,&#10;    &quot;ID_PACIENTE&quot;: 123,&#10;    &quot;ID_MEDICO&quot;: 456,&#10;    &quot;ID_CLINICA&quot;: 789,&#10;    &quot;pagamentoConsulta&quot;: 250.00,&#10;    &quot;areaProcura&quot;: &quot;Dermatologia&quot;&#10;  }&#10;}" />
+                  <option name="raw" value="{&#10;  &quot;pacienteId&quot;: 3,&#10;  &quot;medicoId&quot;: 10,&#10;  &quot;clinicaId&quot;: 7,&#10;  &quot;dataConsulta&quot;: &quot;2023-12-11&quot;,&#10;  &quot;formatoConsulta&quot;: &quot;online&quot;,&#10;  &quot;pagamentoConsulta&quot;: 550.0,&#10;  &quot;areaProcura&quot;: &quot;Ortopedia&quot;&#10;}&#10;&#10;" />
                   <option name="type" value="JSON" />
                 </bodyState>
               </option>
               <option name="id" value="00b3c462-4703-4bf7-b730-d36bdf56fa12" />
-              <option name="method" value="POST" />
+              <option name="method" value="DELETE" />
               <option name="name" value="Draft (2)" />
-              <option name="url" value="http://localhost:8080/consulta" />
+              <option name="url" value="http://localhost:8080/consulta/59" />
             </requestState>
           </list>
         </option>
