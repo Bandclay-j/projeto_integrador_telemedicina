@@ -44,7 +44,7 @@ function cadPaciente() {
         .then(function (response) {
             console.log(response);
             alert("Paciente cadastrado com sucesso!");
-            window.location = "./login.html";
+            window.location = "../src/loginPaciente.html";
         })
         .catch(function (error) {
             console.log(error);
