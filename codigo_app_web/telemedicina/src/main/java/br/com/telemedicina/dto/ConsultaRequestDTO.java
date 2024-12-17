@@ -30,3 +30,4 @@ public class ConsultaRequestDTO {
     private Float pagamentoConsulta;
     private String areaProcura;
 }
+
