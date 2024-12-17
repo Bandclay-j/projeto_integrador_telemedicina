@@ -15,9 +15,11 @@ function loginMedico() {
     .then(function (response) {
         console.log(response);
         alert("Paciente logado com sucesso!");
+        window.location = "../src/pacienteInicio.html"
     })
     .catch(function (error) {
         console.log(error);
         alert("Erro ao logar paciente!");
+        return;
     });
 }
