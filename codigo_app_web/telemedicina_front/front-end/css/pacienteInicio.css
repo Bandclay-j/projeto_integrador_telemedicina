@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, rgb(46, 169, 248) 35%, white 2%);
+}
+
+.nav-item {
+    margin-right: 10px;
+    font-size: 20px;
+    transition: scale 5.5s ease;
+}
