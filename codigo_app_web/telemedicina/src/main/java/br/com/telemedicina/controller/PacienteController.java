@@ -1,7 +1,10 @@
 package br.com.telemedicina.controller;
 
+import br.com.telemedicina.dto.PacienteRequestDTO;
+import br.com.telemedicina.dto.PacienteResponseDTO;
 import br.com.telemedicina.model.Paciente;
 import br.com.telemedicina.service.PacienteService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,39 +13,34 @@ import java.util.List;
 @RestController
 @RequestMapping("/paciente")
 public class PacienteController {
-    private PacienteService pacienteService;
+    private final PacienteService pacienteService;
 
     public PacienteController(PacienteService pacienteService) {
         this.pacienteService = pacienteService;
     }
 
     @GetMapping
-    public ResponseEntity<List<Paciente>> listarPacientes() {
-        List<Paciente> pacientes = pacienteService.getAllPaciente();
-        if(pacientes.isEmpty()) {
-            return ResponseEntity.status(404).build();
-        }
+    public ResponseEntity<List<PacienteResponseDTO>> listarPacientes() {
+        List<PacienteResponseDTO> pacientes = pacienteService.getAllPaciente();
         return ResponseEntity.ok(pacientes);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Paciente> listarPacientesById(@PathVariable Integer id) {
-        return pacienteService.getPacienteById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.status(404).build());
+    public ResponseEntity<PacienteResponseDTO> listarPacientesById(@PathVariable Integer id) {
+        PacienteResponseDTO paciente = pacienteService.getPacienteById(id);
+        return ResponseEntity.ok(paciente);
     }
 
     @PostMapping
-    public ResponseEntity<String> cadastrarPaciente(@RequestBody Paciente paciente) {
-        pacienteService.cadastrarPaciente(paciente);
-        return ResponseEntity.status(201).body("Paciente cadastrado com sucesso!");
+    public ResponseEntity<PacienteResponseDTO> cadastrarPaciente(@RequestBody PacienteRequestDTO requestDTO) {
+        PacienteResponseDTO criarPaciente = pacienteService.cadastrarPaciente(requestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(criarPaciente);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> atualizarPaciente(@PathVariable Integer id, @RequestBody Paciente pacienteAtualizado) {
-        return pacienteService.atualizarPaciente(id, pacienteAtualizado)
-                .map(paciente -> ResponseEntity.ok("Paciente atualizado com sucesso."))
-                .orElse(ResponseEntity.status(404).body("Erro: Paciente com ID " + id + " não encontrado."));
+    public ResponseEntity<PacienteResponseDTO> atualizarPaciente(@PathVariable Integer id, @RequestBody PacienteRequestDTO requestDTO) {
+        PacienteResponseDTO atualizarPaciente = pacienteService.atualizarPaciente(id, requestDTO);
+        return ResponseEntity.ok(atualizarPaciente);
     }
 
     @DeleteMapping("/{id}")

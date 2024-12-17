@@ -15,7 +15,9 @@ public class ConsultaResponseDTO {
     private String formatoConsulta;
     private Float pagamentoConsulta;
     private String areaProcura;
+
     private String pacienteNome;
     private String medicoNome;
     private String clinicaNome;
+
 }

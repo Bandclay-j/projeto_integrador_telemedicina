@@ -1345,75 +1345,6 @@
           <option name="workspaceId" value="drafts" />
         </requestHistoryState>
         <requestHistoryState>
-          <option name="dateTime" value="1733832348425" />
-          <option name="id" value="2ef73801-b0e7-4dde-a568-64519781877c" />
-          <option name="request">
-            <requestState>
-              <option name="body">
-                <bodyState>
-                  <option name="raw" value="{&#10;  &quot;id&quot;: 11,&#10;  &quot;medicamento&quot;: &quot;Paracetamol&quot;,&#10;  &quot;observacao&quot;: &quot;Tomar após as refeições&quot;,&#10;  &quot;pacienteId&quot;: 1,&#10;  &quot;pacienteNome&quot;: &quot;João Silva&quot;,&#10;  &quot;medicoId&quot;: 20,&#10;  &quot;medicoNome&quot;: &quot;Mariana Rodrigues&quot;,&#10;  &quot;dataPrescricao&quot;: &quot;2024-12-01&quot;&#10;}&#10;" />
-                  <option name="type" value="JSON" />
-                </bodyState>
-              </option>
-              <option name="id" value="17d65b72-0296-4703-b59c-372962cc66cf" />
-              <option name="method" value="POST" />
-              <option name="name" value="Draft" />
-              <option name="url" value="http://localhost:8080/prescricao" />
-            </requestState>
-          </option>
-          <option name="response">
-            <responseState>
-              <option name="bodyBytesBase64" value="eyJpZCI6MTEsIm1lZGljYW1lbnRvIjoiUGFyYWNldGFtb2wiLCJvYnNlcnZhY2FvIjoiVG9tYXIgYXDDs3MgYXMgcmVmZWnDp8O1ZXMiLCJwYWNpZW50ZUlkIjoxLCJwYWNpZW50ZU5vbWUiOiJKb8OjbyBTaWx2YSIsIm1lZGljb0lkIjoyMCwibWVkaWNvTm9tZSI6IkRhbmllbCBGZXJuYW5kZXMiLCJkYXRhUHJlc2NyaWNhbyI6IjIwMjQtMTItMDEifQ==" />
-              <option name="bodyString" value="{&#10;  &quot;id&quot;: 11,&#10;  &quot;medicamento&quot;: &quot;Paracetamol&quot;,&#10;  &quot;observacao&quot;: &quot;Tomar após as refeições&quot;,&#10;  &quot;pacienteId&quot;: 1,&#10;  &quot;pacienteNome&quot;: &quot;João Silva&quot;,&#10;  &quot;medicoId&quot;: 20,&#10;  &quot;medicoNome&quot;: &quot;Daniel Fernandes&quot;,&#10;  &quot;dataPrescricao&quot;: &quot;2024-12-01&quot;&#10;}" />
-              <option name="code" value="201" />
-              <option name="contentType" value="application/json" />
-              <option name="headers">
-                <list>
-                  <headerState>
-                    <option name="key" value="Vary" />
-                    <option name="value" value="Origin" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Vary" />
-                    <option name="value" value="Access-Control-Request-Method" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Vary" />
-                    <option name="value" value="Access-Control-Request-Headers" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Content-Type" />
-                    <option name="value" value="application/json" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Transfer-Encoding" />
-                    <option name="value" value="chunked" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Date" />
-                    <option name="value" value="Tue, 10 Dec 2024 12:05:48 GMT" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Keep-Alive" />
-                    <option name="value" value="timeout=60" />
-                  </headerState>
-                  <headerState>
-                    <option name="key" value="Connection" />
-                    <option name="value" value="keep-alive" />
-                  </headerState>
-                </list>
-              </option>
-              <option name="id" value="2ef73801-b0e7-4dde-a568-64519781877c" />
-              <option name="message" value="Created" />
-              <option name="prettyResponseType" value="JSON" />
-              <option name="rawBodyString" value="{&quot;id&quot;:11,&quot;medicamento&quot;:&quot;Paracetamol&quot;,&quot;observacao&quot;:&quot;Tomar após as refeições&quot;,&quot;pacienteId&quot;:1,&quot;pacienteNome&quot;:&quot;João Silva&quot;,&quot;medicoId&quot;:20,&quot;medicoNome&quot;:&quot;Daniel Fernandes&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-01&quot;}" />
-              <option name="size" value="199" />
-              <option name="time" value="73" />
-            </responseState>
-          </option>
-          <option name="workspaceId" value="drafts" />
-        </requestHistoryState>
-        <requestHistoryState>
           <option name="dateTime" value="1733832373149" />
           <option name="id" value="3d114ef9-d48a-44a4-b115-d9ef81b2375a" />
           <option name="request">
@@ -2017,6 +1948,86 @@
               <option name="rawBodyString" value="[{&quot;id&quot;:1,&quot;medicamento&quot;:&quot;Paracetamol&quot;,&quot;observacao&quot;:&quot;Tomar após as refeições&quot;,&quot;pacienteId&quot;:1,&quot;pacienteNome&quot;:&quot;João Silva&quot;,&quot;medicoId&quot;:10,&quot;medicoNome&quot;:&quot;Fernando Ribeiro&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-01&quot;},{&quot;id&quot;:2,&quot;medicamento&quot;:&quot;Paracetamol&quot;,&quot;observacao&quot;:&quot;Tomar após as refeições&quot;,&quot;pacienteId&quot;:2,&quot;pacienteNome&quot;:&quot;Maria Oliveira&quot;,&quot;medicoId&quot;:21,&quot;medicoNome&quot;:&quot;Larissa Costa&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-28&quot;},{&quot;id&quot;:3,&quot;medicamento&quot;:&quot;Amoxicilina&quot;,&quot;observacao&quot;:&quot;Tomar duas vezes ao dia&quot;,&quot;pacienteId&quot;:3,&quot;pacienteNome&quot;:&quot;Carlos Santos&quot;,&quot;medicoId&quot;:3,&quot;medicoNome&quot;:&quot;Maria Souza&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-03&quot;},{&quot;id&quot;:4,&quot;medicamento&quot;:&quot;Omeprazol&quot;,&quot;observacao&quot;:&quot;Tomar em jejum&quot;,&quot;pacienteId&quot;:4,&quot;pacienteNome&quot;:&quot;Ana Pereira&quot;,&quot;medicoId&quot;:4,&quot;medicoNome&quot;:&quot;Carlos Pereira&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-04&quot;},{&quot;id&quot;:5,&quot;medicamento&quot;:&quot;Captopril&quot;,&quot;observacao&quot;:&quot;Evitar bebidas alcoólicas&quot;,&quot;pacienteId&quot;:5,&quot;pacienteNome&quot;:&quot;Fernando Costa&quot;,&quot;medicoId&quot;:15,&quot;medicoNome&quot;:&quot;Paula Santos&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-05&quot;},{&quot;id&quot;:6,&quot;medicamento&quot;:&quot;Lorazepam&quot;,&quot;observacao&quot;:&quot;Uso noturno apenas&quot;,&quot;pacienteId&quot;:6,&quot;pacienteNome&quot;:&quot;Juliana Lima&quot;,&quot;medicoId&quot;:16,&quot;medicoNome&quot;:&quot;Marcos Oliveira&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-06&quot;},{&quot;id&quot;:7,&quot;medicamento&quot;:&quot;Metformina&quot;,&quot;observacao&quot;:&quot;Tomar com o café da manhã&quot;,&quot;pacienteId&quot;:7,&quot;pacienteNome&quot;:&quot;Ricardo Almeida&quot;,&quot;medicoId&quot;:17,&quot;medicoNome&quot;:&quot;Beatriz Figueiredo&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-07&quot;},{&quot;id&quot;:8,&quot;medicamento&quot;:&quot;Aspirina&quot;,&quot;observacao&quot;:&quot;Evitar alimentos ácidos&quot;,&quot;pacienteId&quot;:8,&quot;pacienteNome&quot;:&quot;Tatiane Rocha&quot;,&quot;medicoId&quot;:18,&quot;medicoNome&quot;:&quot;Thiago Lima&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-08&quot;},{&quot;id&quot;:9,&quot;medicamento&quot;:&quot;Simvastatina&quot;,&quot;observacao&quot;:&quot;Tomar à noite&quot;,&quot;pacienteId&quot;:9,&quot;pacienteNome&quot;:&quot;Roberto Martins&quot;,&quot;medicoId&quot;:19,&quot;medicoNome&quot;:&quot;Camila Ribeiro&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-09&quot;},{&quot;id&quot;:10,&quot;medicamento&quot;:&quot;Furosemida&quot;,&quot;observacao&quot;:&quot;Tomar pela manhã&quot;,&quot;pacienteId&quot;:10,&quot;pacienteNome&quot;:&quot;Claudia Ferreira&quot;,&quot;medicoId&quot;:11,&quot;medicoNome&quot;:&quot;Carla Oliveira&quot;,&quot;dataPrescricao&quot;:&quot;2024-12-10&quot;}]" />
               <option name="size" value="1938" />
               <option name="time" value="22" />
+            </responseState>
+          </option>
+          <option name="workspaceId" value="drafts" />
+        </requestHistoryState>
+        <requestHistoryState>
+          <option name="dateTime" value="1734532047730" />
+          <option name="id" value="16154185-286d-418d-a0ab-5af2f11e4c4a" />
+          <option name="request">
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;id&quot;: 2,&#10;  &quot;medicamento&quot;: &quot;Paracetamol&quot;,&#10;  &quot;observacao&quot;: &quot;Tomar após as refeições&quot;,&#10;  &quot;pacienteId&quot;: 2,&#10;  &quot;pacienteNome&quot;: &quot;Maria Oliveira&quot;,&#10;  &quot;medicoId&quot;: 21,&#10;  &quot;medicoNome&quot;: &quot;Larissa Costa&quot;,&#10;  &quot;dataPrescricao&quot;: &quot;2024-12-28&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="id" value="17d65b72-0296-4703-b59c-372962cc66cf" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft" />
+              <option name="url" value="http://localhost:8080/consulta/paciente/5" />
+            </requestState>
+          </option>
+          <option name="response">
+            <responseState>
+              <option name="code" value="401" />
+              <option name="contentType" value="application/octet-stream" />
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Set-Cookie" />
+                    <option name="value" value="JSESSIONID=ED255095E1B3A67CDEC20F2322099A03; Path=/; HttpOnly" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="WWW-Authenticate" />
+                    <option name="value" value="Basic realm=&quot;Realm&quot;" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Content-Type-Options" />
+                    <option name="value" value="nosniff" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-XSS-Protection" />
+                    <option name="value" value="0" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Cache-Control" />
+                    <option name="value" value="no-cache, no-store, max-age=0, must-revalidate" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Pragma" />
+                    <option name="value" value="no-cache" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Expires" />
+                    <option name="value" value="0" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="X-Frame-Options" />
+                    <option name="value" value="DENY" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Content-Length" />
+                    <option name="value" value="0" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Date" />
+                    <option name="value" value="Wed, 18 Dec 2024 14:27:27 GMT" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Keep-Alive" />
+                    <option name="value" value="timeout=60" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Connection" />
+                    <option name="value" value="keep-alive" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="16154185-286d-418d-a0ab-5af2f11e4c4a" />
+              <option name="message" value="Unauthorized" />
+              <option name="time" value="82" />
             </responseState>
           </option>
           <option name="workspaceId" value="drafts" />

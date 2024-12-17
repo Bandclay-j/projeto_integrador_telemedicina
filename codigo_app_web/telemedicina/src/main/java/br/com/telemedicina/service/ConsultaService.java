@@ -13,6 +13,7 @@ import br.com.telemedicina.repository.PacienteRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -46,6 +47,15 @@ public class ConsultaService {
         Consulta consulta = consultaRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Consulta não encontrado."));
         return toConsultaResponseDTO(consulta);
+    }
+
+    //Buscar a consulta pelo ID do paciente
+    public List<ConsultaResponseDTO> getConsultaByPaciente(Integer pacienteId) {
+        List<Consulta> consultas = consultaRepository.findByPacienteId(pacienteId);
+
+        return consultas.stream()
+                .map(this::toConsultaResponseDTO)
+                .collect(Collectors.toList());
     }
 
     //Cadastrar uma consulta
