@@ -5,11 +5,44 @@
 }
 
 body {
-    background: linear-gradient(to right, rgb(46, 169, 248) 35%, white 2%);
+    background: linear-gradient(to right, rgb(46, 169, 248) 50%, white 50%);
 }
 
-.nav-item {
-    margin-right: 10px;
-    font-size: 20px;
-    transition: scale 5.5s ease;
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.table-container {
+    flex: 1 1 60%;
+    max-width: 925px;
+}
+
+.button-container {
+    max-width: 150px;
+    display: flex;
+    margin: 100px auto;
+}
+
+.dropdown-menu {
+    background-color: #343a40; /* Fundo escuro */
+    color: white; /* Texto claro */
+    border: none;
+}
+
+.dropdown-item:hover {
+    background-color: #495057; /* Cor ao passar o mouse */
+}
+
+.rounded-circle {
+    transition: transform 0.3s ease-in-out;
+}
+
+.rounded-circle:hover {
+    transform: scale(1.1);
+}
+
+.dropdown {
+    margin: 5px;
 }
