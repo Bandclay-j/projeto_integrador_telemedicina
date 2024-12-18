@@ -4,18 +4,20 @@ import br.com.telemedicina.dto.PacienteRequestDTO;
 import br.com.telemedicina.dto.PacienteResponseDTO;
 import br.com.telemedicina.model.Paciente;
 import br.com.telemedicina.repository.PacienteRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class PacienteService {
     private final PacienteRepository pacienteRepository;
+    private PasswordEncoder passwordEncoder;
 
-    public PacienteService(PacienteRepository pacienteRepository) {
+    public PacienteService(PacienteRepository pacienteRepository, PasswordEncoder passwordEncoder) {
         this.pacienteRepository = pacienteRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     //Listar todos os pacientes
@@ -42,7 +44,9 @@ public class PacienteService {
         paciente.setTelefone(requestDTO.getTelefone());
         paciente.setEndereco(requestDTO.getEndereco());
         paciente.setEmail(requestDTO.getEmail());
-        paciente.setSenha(requestDTO.getSenha());
+
+        String senhaCriptografada = passwordEncoder.encode(requestDTO.getSenha());
+        paciente.setSenha(senhaCriptografada);
 
         Paciente pacienteSalvar = pacienteRepository.save(paciente);
 
@@ -51,6 +55,7 @@ public class PacienteService {
 
     //Atualizar um paciente existente
     public PacienteResponseDTO atualizarPaciente(Integer id, PacienteRequestDTO requestDTO) {
+
         Paciente pacienteExistente = pacienteRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Paciente não encontrado com ID: " + id));
 

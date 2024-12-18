@@ -32,6 +32,13 @@ public class ConsultaController {
         return ResponseEntity.ok(consultaResponseDTO);
     }
 
+    //Buscar consulta pelo id do paciente
+    @GetMapping("/paciente/{id}")
+    public ResponseEntity<List<ConsultaResponseDTO>> listaConsultaByPaciente(@PathVariable Integer pacienteId) {
+       List<ConsultaResponseDTO> consultasPaciente = consultaService.getConsultaByPaciente(pacienteId);
+       return ResponseEntity.ok(consultasPaciente);
+    }
+
     @PostMapping
     public ResponseEntity<ConsultaResponseDTO> cadastrarConsulta(@RequestBody @Valid ConsultaRequestDTO consultaRequestDTO) {
         ConsultaResponseDTO consultaResponseDTO = consultaService.cadastrarConsulta(consultaRequestDTO);
