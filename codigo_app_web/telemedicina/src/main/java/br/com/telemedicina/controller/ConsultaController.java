@@ -33,10 +33,17 @@ public class ConsultaController {
     }
 
     //Buscar consulta pelo id do paciente
-    @GetMapping("/paciente/{id}")
+    @GetMapping("/paciente/{pacienteId}")
     public ResponseEntity<List<ConsultaResponseDTO>> listaConsultaByPaciente(@PathVariable Integer pacienteId) {
        List<ConsultaResponseDTO> consultasPaciente = consultaService.getConsultaByPaciente(pacienteId);
        return ResponseEntity.ok(consultasPaciente);
+    }
+
+    //Buscar consulta pelo Id do médico
+    @GetMapping("/medico/{medicoId}")
+    public ResponseEntity<List<ConsultaResponseDTO>> listaConsultaByMedico(@PathVariable Integer medicoId) {
+        List<ConsultaResponseDTO> consultaMedico = consultaService.getConsultaByMedico(medicoId);
+        return ResponseEntity.ok(consultaMedico);
     }
 
     @PostMapping

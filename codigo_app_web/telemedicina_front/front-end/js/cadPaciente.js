@@ -10,6 +10,8 @@ function cadPaciente() {
     var rg = $("#rg").val();
     var senha = $("#senha").val();
     var confirmarSenha = $("#confirmarSenha").val();
+    var error = $("#error");
+    var senhaError = $("#senhaError");
 
     //Valida se os campos obrigatórios foram preenchidos
     if (nome == "" ||
@@ -23,12 +25,13 @@ function cadPaciente() {
          senha == "" || 
          confirmarSenha == "") {
 
-        alert("Preencha todos os campos obrigatórios!");
+            error.show();
         return;
     }
 
     //Valida se a senha e a confirmação de senha são iguais
     if (senha === confirmarSenha) {
+        error.hide();
         //Faz a requisição POST para o servidor
         axios.post('http://localhost:8080/paciente', {
             "nome": nome,
@@ -50,8 +53,8 @@ function cadPaciente() {
             console.log(error);
             alert("Erro ao cadastrar paciente!");
         });
-    } else if (senha !== confirmaSenha) {
-        alert("Senhas não conferem!");
+    } else if (senha !== confirmarSenha) {
+        senhaError.show();
         return;
     }
 }

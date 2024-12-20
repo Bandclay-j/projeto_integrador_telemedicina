@@ -53,3 +53,20 @@ body {
 .button:hover {
     background-color: #005f13;
 }
+
+#error {
+    color: red !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+    justify-self: center;
+    margin-top: 40px;
+    display: none;
+}
+
+#senhaError {
+    color: red !important;
+    font-size: 0.8rem;
+    font-weight: bold;
+    justify-self: center;
+    display: none;
+}
