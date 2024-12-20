@@ -48,6 +48,15 @@ public class ConsultaService {
         return toConsultaResponseDTO(consulta);
     }
 
+    //Buscar a consulta pelo ID do paciente
+    public List<ConsultaResponseDTO> getConsultaByPaciente(Integer pacienteId) {
+        List<Consulta> consultas = consultaRepository.findByPacienteId(pacienteId);
+
+        return consultas.stream()
+                .map(this::toConsultaResponseDTO)
+                .collect(Collectors.toList());
+    }
+
     //Cadastrar uma consulta
     public ConsultaResponseDTO cadastrarConsulta(ConsultaRequestDTO requestDTO) {
         if(requestDTO.getPacienteId() == null || requestDTO.getMedicoId() == null || requestDTO.getClinicaId() == null) {

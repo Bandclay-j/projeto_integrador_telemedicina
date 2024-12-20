@@ -26,7 +26,6 @@ body {
 }
 
 .dropdown-menu {
-    background-color: #343a40; /* Fundo escuro */
     color: white; /* Texto claro */
     border: none;
 }
