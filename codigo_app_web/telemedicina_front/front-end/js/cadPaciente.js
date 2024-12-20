@@ -31,6 +31,7 @@ function cadPaciente() {
 
     //Valida se a senha e a confirmação de senha são iguais
     if (senha === confirmarSenha) {
+        error.hide();
         //Faz a requisição POST para o servidor
         axios.post('http://localhost:8080/paciente', {
             "nome": nome,
