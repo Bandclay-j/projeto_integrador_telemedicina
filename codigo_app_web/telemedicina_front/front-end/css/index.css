@@ -4,12 +4,11 @@ body,html {
     color: #333;
     margin: 0;
     padding: 0;
-    background: url(../img/background.png) no-repeat center center fixed;
-    background-size: cover;
 }
 
 .navbar {
     padding: 20px;
+    background-color: #588ac0;
 }
 
 main {
